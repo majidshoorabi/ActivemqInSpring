@@ -2,7 +2,6 @@ package com.github.majidshoorabi;
 
 
 import com.github.majidshoorabi.config.AppConfig;
-import com.github.majidshoorabi.receiver.MessageReceiver;
 import com.github.majidshoorabi.sender.MessageSender;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -24,8 +23,7 @@ public class JmsActiveMQApplication {
         sender.sendMessage(queueName,"This is a test message");
 
 
-        MessageReceiver receiver =context.getBean(MessageReceiver.class);
-        receiver.receiveMessage(queueName);
+
 
     }
 }
