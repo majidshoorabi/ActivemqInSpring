@@ -17,9 +17,11 @@ import javax.jms.ConnectionFactory;
 @ComponentScan("com.github.majidshoorabi")
 public class AppConfig {
 
+    private static final String brokerUrl = "tcp://localhost:61616";
+
     @Bean
-    public ConnectionFactory connectionFactory(){
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+    public ConnectionFactory connectionFactory() {
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(AppConfig.brokerUrl);
         return connectionFactory;
     }
 }
