@@ -21,10 +21,15 @@ import javax.jms.ConnectionFactory;
 public class AppConfig {
 
     private static final String queueName = "TestQueue";
+    private static final String brokerUrl = "tcp://localhost:61616";
 
     @Bean
     public ConnectionFactory connectionFactory(){
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+
+        /**
+         * You can set this url "vm://localhost" as brokerUrl if you don't have an activemq service for your test
+         */
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(brokerUrl);
         return connectionFactory;
     }
 
