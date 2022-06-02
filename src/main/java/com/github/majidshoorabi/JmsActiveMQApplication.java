@@ -15,7 +15,7 @@ public class JmsActiveMQApplication {
 
     private static final String queueName = "TestQueue";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
@@ -24,6 +24,10 @@ public class JmsActiveMQApplication {
             sender.sendMessage(JmsActiveMQApplication.queueName, i + " - This is a test message");
         }
 
+        for (int i = 0; i < 1000; i++) {
+            Thread.sleep(100);
+            System.out.println("---------------");
+        }
 
     }
 }
