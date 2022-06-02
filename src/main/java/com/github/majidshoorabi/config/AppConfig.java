@@ -14,7 +14,7 @@ import javax.jms.ConnectionFactory;
  */
 
 @Configuration
-@ComponentScan
+@ComponentScan("com.github.majidshoorabi")
 public class AppConfig {
 
     @Bean
