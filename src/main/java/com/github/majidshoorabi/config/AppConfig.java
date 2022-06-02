@@ -29,7 +29,7 @@ public class AppConfig {
         /**
          * You can set this url "vm://localhost" as brokerUrl if you don't have an activemq service for your test
          */
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(brokerUrl);
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(AppConfig.brokerUrl);
         return connectionFactory;
     }
 
@@ -38,7 +38,7 @@ public class AppConfig {
         DefaultMessageListenerContainer container = new DefaultMessageListenerContainer();
         container.setConnectionFactory(connectionFactory());
         container.setMessageListener(new MessageListener());
-        container.setDestinationName(queueName);
+        container.setDestinationName(AppConfig.queueName);
         return container;
     }
 }
