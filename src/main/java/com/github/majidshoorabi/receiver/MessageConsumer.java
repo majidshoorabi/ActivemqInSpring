@@ -1,9 +1,9 @@
 package com.github.majidshoorabi.receiver;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.TextMessage;
+import com.github.majidshoorabi.config.AppConfig;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
 
 /**
  * @author majid.shoorabi
@@ -11,22 +11,11 @@ import javax.jms.TextMessage;
  * @project IntelliJ IDEA
  */
 
-public class MessageConsumer implements MessageListener {
+@Component
+public class MessageConsumer {
 
-    @Override
-    public void onMessage(Message message) {
-
-        TextMessage textMessage = (TextMessage) message;
-        try {
-
-            Thread.sleep(500);
-            System.out.println("***** Text is :" + textMessage.getText());
-
-        } catch (JMSException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+    @JmsListener(destination = AppConfig.queueName)
+    public void listenMessage(String msg){
+        System.out.println("***** Text is :" + msg);
     }
 }
