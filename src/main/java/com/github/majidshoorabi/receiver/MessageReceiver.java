@@ -34,7 +34,7 @@ public class MessageReceiver {
         TextMessage textMessage = (TextMessage) message;
 
         try {
-            System.out.println("Text is :" + textMessage.getText());
+            System.out.println("***** Text is :" + textMessage.getText());
         } catch (JMSException e) {
             e.printStackTrace();
         }
