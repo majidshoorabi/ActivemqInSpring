@@ -20,9 +20,9 @@ public class JmsActiveMQApplication {
         String queueName = "TestQueue";
 
         MessageSender sender = context.getBean(MessageSender.class);
-        sender.sendMessage(queueName,"This is a test message");
-
-
+        for (int i = 0; i < 1000; i++) {
+            sender.sendMessage(queueName, i + " - This is a test message");
+        }
 
 
     }
