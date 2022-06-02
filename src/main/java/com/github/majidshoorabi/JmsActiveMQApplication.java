@@ -14,18 +14,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class JmsActiveMQApplication {
 
+    private static final String queueName = "TestQueue";
+
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        String queueName = "TestQueue";
-
         MessageSender sender = context.getBean(MessageSender.class);
-        sender.sendMessage(queueName,"This is a test message");
-
+        sender.sendMessage(JmsActiveMQApplication.queueName,"This is a test message");
 
         MessageReceiver receiver =context.getBean(MessageReceiver.class);
-        receiver.receiveMessage(queueName);
+        receiver.receiveMessage(JmsActiveMQApplication.queueName);
 
     }
 }
