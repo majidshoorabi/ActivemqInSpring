@@ -5,6 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.jms.listener.MessageListenerContainer;
 
@@ -18,10 +19,11 @@ import javax.jms.ConnectionFactory;
 
 @Configuration
 @ComponentScan("com.github.majidshoorabi")
+@EnableJms
 public class AppConfig {
 
-    private static final String queueName = "TestQueue";
-    private static final String brokerUrl = "tcp://localhost:61616";
+    public static final String queueName = "TestQueue";
+    public static final String brokerUrl = "tcp://localhost:616106";
 
     @Bean
     public ConnectionFactory connectionFactory(){
@@ -39,6 +41,7 @@ public class AppConfig {
         container.setConnectionFactory(connectionFactory());
         container.setMessageListener(new MessageConsumer());
         container.setDestinationName(AppConfig.queueName);
+        container.setConcurrency("3-6");
         return container;
     }
 }
