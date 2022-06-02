@@ -19,7 +19,7 @@ public class AppConfig {
 
     @Bean
     public ConnectionFactory connectionFactory(){
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         return connectionFactory;
     }
 }
