@@ -1,6 +1,6 @@
 package com.github.majidshoorabi.config;
 
-import com.github.majidshoorabi.receiver.MessageListener;
+import com.github.majidshoorabi.receiver.MessageConsumer;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -37,7 +37,7 @@ public class AppConfig {
     public MessageListenerContainer messageListenerContainer(){
         DefaultMessageListenerContainer container = new DefaultMessageListenerContainer();
         container.setConnectionFactory(connectionFactory());
-        container.setMessageListener(new MessageListener());
+        container.setMessageListener(new MessageConsumer());
         container.setDestinationName(AppConfig.queueName);
         return container;
     }
